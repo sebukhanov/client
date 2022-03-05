@@ -1,12 +1,14 @@
-import { HubConnectionBuilder, LogLevel } from '@aspnet/signalr'
+import { HubConnectionBuilder, LogLevel } from '@microsoft/signalr'
 import store from './store'
 
 export default {
   install (Vue) {
     const connection = new HubConnectionBuilder()
-      .withUrl('/chat', { accessTokenFactory: () => store.state.token})
+      .withUrl('http://localhost:8089/chat', { accessTokenFactory: () => store.state.token})
       .configureLogging(LogLevel.Information)
+      .withAutomaticReconnect()
       .build()
+
     const chatHub = new Vue()
 
     Vue.prototype.$chatHub = chatHub
