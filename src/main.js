@@ -10,7 +10,7 @@ import 'bootstrap-vue/dist/bootstrap-vue.css'
 
 Vue.config.productionTip = false
 
-axios.defaults.baseURL = ''
+axios.defaults.baseURL = 'http://localhost:8089/'
 Vue.prototype.$http = axios
 axios.interceptors.response.use((response) => {
   return response
